@@ -16,7 +16,13 @@ const addNoteHandler = (request, h) => {
   const isSuccess = notes.filter((note) => note.id === id).length > 0;
 
   if (isSuccess) {
-    const response = h.response({ error: false, message: 'Catatan berhasil ditambahkan' });
+    const response = h.response({
+      status: 'success',
+      message: 'Catatan berhasil ditambahkan',
+      data: {
+        noteId: id,
+      },
+    });
 
     response.header('Access-Control-Allow-Origin', '*');
 
